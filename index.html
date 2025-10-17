@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Afrique Delice - Spécialités Ivoiriennes et Sénégalaises</title>
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #1a1a1a;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #b8941f;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .contact-card i {
+            font-size: 36px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: #f0f0f0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Menu Section */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background-color: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: #d4af37;
+            color: white;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-content {
+            padding: 20px;
+        }
+        
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 10px 0;
+        }
+        
+        .local-price {
+            color: green;
+        }
+        
+        .remote-price {
+            color: red;
+        }
+        
+        .order-btn {
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        /* Plat du jour */
+        .plat-du-jour {
+            background-color: #fff8e1;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .plat-du-jour h3 {
+            color: #d4af37;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .special-badge {
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .delivery-option {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .delivery-option label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Receipt */
+        .receipt {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+        
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .receipt-details {
+            margin-bottom: 20px;
+        }
+        
+        .receipt-total {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        
+        .receipt-signature {
+            margin-top: 50px;
+            text-align: right;
+        }
+        
+        /* Mode édition */
+        .edit-mode-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d4af37;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .edit-mode-btn:hover {
+            background-color: #b8941f;
+        }
+        
+        .editable {
+            position: relative;
+        }
+        
+        .editable:hover::after {
+            content: "✏️";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(212, 175, 55, 0.8);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        
+        .edit-controls {
+            display: none;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            border-radius: 3px;
+        }
+        
+        .editable:hover .edit-controls {
+            display: block;
+        }
+        
+        .edit-image-btn {
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .edit-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1002;
+            padding: 20px;
+            overflow-y: auto;
+            transition: right 0.3s;
+        }
+        
+        .edit-panel.active {
+            right: 0;
+        }
+        
+        .edit-panel h3 {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .edit-section {
+            margin-bottom: 30px;
+        }
+        
+        .edit-item {
+            margin-bottom: 15px;
+        }
+        
+        .edit-item label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .edit-item input, .edit-item textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .edit-item textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        
+        .save-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .receipt, .receipt * {
+                visibility: visible;
+            }
+            .receipt {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .edit-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bouton mode édition -->
+    <div class="edit-mode-btn" onclick="openEditPanel()">✏️</div>
+
+    <!-- Panel d'édition -->
+    <div id="editPanel" class="edit-panel">
+        <h3>Mode Édition</h3>
+        
+        <div class="edit-section">
+            <h4>Informations générales</h4>
+            <div class="edit-item">
+                <label>Nom du restaurant:</label>
+                <input type="text" id="edit-restaurant-name" value="Afrique Delice">
+            </div>
+            <div class="edit-item">
+                <label>Téléphone:</label>
+                <input type="text" id="edit-phone" value="+221 33 821 00 00">
+            </div>
+            <div class="edit-item">
+                <label>Horaires:</label>
+                <input type="text" id="edit-hours" value="Lun-Dim: 10h-22h">
+            </div>
+            <div class="edit-item">
+                <label>Adresse:</label>
+                <textarea id="edit-address">Rue du CESAG, Dakar, Sénégal</textarea>
+            </div>
+        </div>
+        
+        <div class="edit-section">
+            <h4>Plat du jour</h4>
+            <div class="edit-item">
+                <label>Nom du plat:</label>
+                <input type="text" id="edit-daily-dish-name" value="Thiébou Dieune">
+            </div>
+            <div class="edit-item">
+                <label>Description:</label>
+                <textarea id="edit-daily-dish-desc">Riz au poisson, légumes et épices</textarea>
+            </div>
+            <div class="edit-item">
+                <label>Prix CESAG:</label>
+                <input type="number" id="edit-daily-dish-price-local" value="2500">
+            </div>
+            <div class="edit-item">
+                <label>Prix standard:</label>
+                <input type="number" id="edit-daily-dish-price-remote" value="3000">
+            </div>
+        </div>
+        
+        <div class="edit-section">
+            <h4>Plats Sénégalais</h4>
+            <div id="senegalese-dishes">
+                <!-- Les plats sénégalais seront ajoutés dynamiquement -->
+            </div>
+            <button class="btn" onclick="addNewDish('senegalese')">Ajouter un plat</button>
+        </div>
+        
+        <div class="edit-section">
+            <h4>Plats Ivoiriens</h4>
+            <div id="ivorian-dishes">
+                <!-- Les plats ivoiriens seront ajoutés dynamiquement -->
+            </div>
+            <button class="btn" onclick="addNewDish('ivorian')">Ajouter un plat</button>
+        </div>
+        
+        <div class="edit-section">
+            <h4>Images</h4>
+            <p>Pour modifier les images, cliquez sur l'icône de crayon qui apparaît au survol des images.</p>
+        </div>
+        
+        <button class="save-btn" onclick="saveChanges()">Enregistrer les modifications</button>
+        <button class="cancel-btn" onclick="closeEditPanel()">Fermer</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo editable" id="restaurant-name">Afrique Delice</div>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1 id="hero-title" class="editable">Afrique Delice</h1>
+            <p class="editable">Découvrez les saveurs authentiques de la Côte d'Ivoire et du Sénégal</p>
+            <a href="#menu" class="btn">Voir le Menu</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i>📍</i>
+                    <h3>Adresse</h3>
+                    <p class="editable" id="contact-address">Rue du CESAG, Dakar, Sénégal</p>
+                </div>
+                <div class="contact-card">
+                    <i>📞</i>
+                    <h3>Téléphone</h3>
+                    <p class="editable" id="contact-phone">+221 33 821 00 00</p>
+                </div>
+                <div class="contact-card">
+                    <i>🕒</i>
+                    <h3>Horaires</h3>
+                    <p class="editable" id="contact-hours">Lun-Dim: 10h-22h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galerie" class="gallery">
+        <div class="container">
+            <h2>Notre Galerie</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item editable">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plat 1" data-img-index="0">
+                    <div class="edit-controls">
+                        <input type="file" id="gallery-img-0" style="display: none;" accept="image/*" onchange="updateGalleryImage(0)">
+                        <button class="edit-image-btn" onclick="document.getElementById('gallery-img-0').click()">Changer</button>
+                    </div>
+                </div>
+                <div class="gallery-item editable">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plat 2" data-img-index="1">
+                    <div class="edit-controls">
+                        <input type="file" id="gallery-img-1" style="display: none;" accept="image/*" onchange="updateGalleryImage(1)">
+                        <button class="edit-image-btn" onclick="document.getElementById('gallery-img-1').click()">Changer</button>
+                    </div>
+                </div>
+                <div class="gallery-item editable">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plat 3" data-img-index="2">
+                    <div class="edit-controls">
+                        <input type="file" id="gallery-img-2" style="display: none;" accept="image/*" onchange="updateGalleryImage(2)">
+                        <button class="edit-image-btn" onclick="document.getElementById('gallery-img-2').click()">Changer</button>
+                    </div>
+                </div>
+                <div class="gallery-item editable">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plat 4" data-img-index="3">
+                    <div class="edit-controls">
+                        <input type="file" id="gallery-img-3" style="display: none;" accept="image/*" onchange="updateGalleryImage(3)">
+                        <button class="edit-image-btn" onclick="document.getElementById('gallery-img-3').click()">Changer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2>Notre Menu</h2>
+            
+            <!-- Plat du jour -->
+            <div class="plat-du-jour">
+                <h3>Plat du Jour</h3>
+                <div class="menu-item">
+                    <span class="special-badge">Spécial</span>
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plat du jour" id="daily-dish-img" data-img-index="4">
+                    <div class="menu-content">
+                        <h3 id="daily-dish-name">Thiébou Dieune</h3>
+                        <p id="daily-dish-desc">Riz au poisson, légumes et épices</p>
+                        <div class="price">
+                            <span class="local-price">Prix CESAG: <span id="daily-dish-price-local">2500</span> FCFA</span>
+                            <span class="remote-price">Prix standard: <span id="daily-dish-price-remote">3000</span> FCFA</span>
+                        </div>
+                        <button class="btn order-btn" onclick="openOrderModal('Thiébou Dieune', 2500, 3000)">Commander</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="showCategory('senegalais')">Spécialités Sénégalaises</button>
+                <button class="tab-btn" onclick="showCategory('ivoirien')">Spécialités Ivoiriennes</button>
+            </div>
+            
+            <div id="senegalais" class="menu-category">
+                <div class="menu-grid" id="senegalese-dishes-container">
+                    <!-- Les plats sénégalais seront ajoutés dynamiquement -->
+                </div>
+            </div>
+            
+            <div id="ivoirien" class="menu-category" style="display: none;">
+                <div class="menu-grid" id="ivorian-dishes-container">
+                    <!-- Les plats ivoiriens seront ajoutés dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p id="footer-text" class="editable">Afrique Delice &copy; 2023 - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>Commander</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="plat">Plat commandé:</label>
+                    <input type="text" id="plat" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prix">Prix:</label>
+                    <input type="text" id="prix" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nom">Nom complet:</label>
+                    <input type="text" id="nom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telephone">Téléphone:</label>
+                    <input type="tel" id="telephone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adresse">Adresse (pour livraison):</label>
+                    <input type="text" id="adresse">
+                </div>
+                
+                <div class="form-group">
+                    <label for="horaire">Horaire souhaité:</label>
+                    <input type="datetime-local" id="horaire" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Mode de réception:</label>
+                    <div class="delivery-option">
+                        <label>
+                            <input type="radio" name="delivery" value="pickup" checked onclick="toggleDeliveryCost(false)">
+                            Récupération sur place
+                        </label>
+                        <label>
+                            <input type="radio" name="delivery" value="delivery" onclick="toggleDeliveryCost(true)">
+                            Livraison
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="deliveryZoneGroup" style="display: none;">
+                    <label for="deliveryZone">Zone de livraison:</label>
+                    <select id="deliveryZone" onchange="updateDeliveryCost()">
+                        <option value="1000">Zone 1 (1000 FCFA)</option>
+                        <option value="1500">Zone 2 (1500 FCFA)</option>
+                        <option value="2000">Zone 3 (2000 FCFA)</option>
+                        <option value="2500">Zone 4 (2500 FCFA)</option>
+                        <option value="3000">Zone 5 (3000 FCFA)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="instructions">Instructions spéciales:</label>
+                    <textarea id="instructions" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <p id="totalCost">Coût total: <span id="totalAmount">0</span> FCFA</p>
+                </div>
+                
+                <button type="button" class="btn" onclick="submitOrder()">Envoyer la commande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Receipt -->
+    <div id="receipt" class="receipt">
+        <div class="receipt-header">
+            <h2 id="receipt-restaurant-name">Afrique Delice</h2>
+            <p id="receipt-address">Rue du CESAG, Dakar, Sénégal</p>
+            <p id="receipt-phone">Tél: +221 33 821 00 00</p>
+        </div>
+        
+        <div class="receipt-details">
+            <p><strong>Reçu de commande</strong></p>
+            <p id="receiptDate">Date: </p>
+            <p id="receiptCustomer">Client: </p>
+            <p id="receiptPhone">Téléphone: </p>
+            <p id="receiptDish">Plat: </p>
+            <p id="receiptPrice">Prix du plat: </p>
+            <p id="receiptDelivery">Frais de livraison: </p>
+            <p id="receiptTotal" class="receipt-total">Total: </p>
+            <p id="receiptTime">Horaire: </p>
+            <p id="receiptInstructions">Instructions: </p>
+        </div>
+        
+        <div class="receipt-signature">
+            <p>Signature du propriétaire</p>
+            <p>_________________________</p>
+        </div>
+        
+        <button class="btn" onclick="printReceipt()">Imprimer le reçu</button>
+    </div>
+
+    <!-- Modal de connexion -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Accès Mode Édition</h2>
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" placeholder="Entrez le mot de passe">
+            </div>
+            <button class="btn" onclick="checkPassword()">Se connecter</button>
+            <p id="loginError" style="color: red; margin-top: 10px; display: none;">Mot de passe incorrect</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let currentDish = '';
+        let currentPrice = 0;
+        let isNearCESAG = false;
+        let editMode = false;
+        const CESAG_COORDS = {
+            latitude: 14.6937,
+            longitude: -17.4441
+        };
+        const MAX_DISTANCE_KM = 10; // 10km autour du CESAG
+        const EDIT_PASSWORD = "RestoIvoirienCesag";
+
+        // Données des plats
+        let menuData = {
+            dailyDish: {
+                name: "Thiébou Dieune",
+                description: "Riz au poisson, légumes et épices",
+                priceLocal: 2500,
+                priceRemote: 3000,
+                image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
+            senegalese: [
+                {
+                    name: "Thiébou Dieune",
+                    description: "Riz au poisson, légumes et épices",
+                    priceLocal: 2500,
+                    priceRemote: 3000,
+                    image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    name: "Yassa Poulet",
+                    description: "Poulet mariné, oignons, citron et moutarde",
+                    priceLocal: 2200,
+                    priceRemote: 2700,
+                    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    name: "Mafé",
+                    description: "Viande en sauce arachide avec légumes",
+                    priceLocal: 2300,
+                    priceRemote: 2800,
+                    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                }
+            ],
+            ivorian: [
+                {
+                    name: "Attiéké Poisson",
+                    description: "Semoule de manioc avec poisson braisé",
+                    priceLocal: 2000,
+                    priceRemote: 2500,
+                    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    name: "Kedjenou",
+                    description: "Poulet mijoté avec légumes et épices",
+                    priceLocal: 2400,
+                    priceRemote: 2900,
+                    image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    name: "Alloco",
+                    description: "Banane plantain frite avec sauce piquante",
+                    priceLocal: 1500,
+                    priceRemote: 2000,
+                    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                }
+            ]
+        };
+
+        // Images de la galerie
+        let galleryImages = [
+            "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+        ];
+
+        // Au chargement de la page
+        window.onload = function() {
+            loadFromLocalStorage();
+            initMenu();
+            checkGeolocation();
+            setupEditMode();
+        };
+
+        // Charger les données depuis le localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('restaurantData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                menuData = data.menuData || menuData;
+                galleryImages = data.galleryImages || galleryImages;
+                
+                // Mettre à jour les informations générales
+                document.getElementById('restaurant-name').textContent = data.restaurantName || 'Afrique Delice';
+                document.getElementById('hero-title').textContent = data.restaurantName || 'Afrique Delice';
+                document.getElementById('contact-address').textContent = data.address || 'Rue du CESAG, Dakar, Sénégal';
+                document.getElementById('contact-phone').textContent = data.phone || '+221 33 821 00 00';
+                document.getElementById('contact-hours').textContent = data.hours || 'Lun-Dim: 10h-22h';
+                document.getElementById('footer-text').textContent = `${data.restaurantName || 'Afrique Delice'} &copy; 2023 - Tous droits réservés`;
+                
+                // Mettre à jour les images de la galerie
+                updateGalleryImages();
+            }
+        }
+
+        // Sauvegarder les données dans le localStorage
+        function saveToLocalStorage() {
+            const data = {
+                restaurantName: document.getElementById('restaurant-name').textContent,
+                address: document.getElementById('contact-address').textContent,
+                phone: document.getElementById('contact-phone').textContent,
+                hours: document.getElementById('contact-hours').textContent,
+                menuData: menuData,
+                galleryImages: galleryImages
+            };
+            localStorage.setItem('restaurantData', JSON.stringify(data));
+        }
+
+        // Initialiser le menu
+        function initMenu() {
+            // Mettre à jour le plat du jour
+            updateDailyDish();
+            
+            // Générer les plats sénégalais
+            const senegaleseContainer = document.getElementById('senegalese-dishes-container');
+            senegaleseContainer.innerHTML = '';
+            menuData.senegalese.forEach((dish, index) => {
+                senegaleseContainer.appendChild(createDishElement(dish, 'senegalese', index));
+            });
+            
+            // Générer les plats ivoiriens
+            const ivorianContainer = document.getElementById('ivorian-dishes-container');
+            ivorianContainer.innerHTML = '';
+            menuData.ivorian.forEach((dish, index) => {
+                ivorianContainer.appendChild(createDishElement(dish, 'ivorian', index));
+            });
+            
+            // Mettre à jour le panneau d'édition
+            updateEditPanel();
+        }
+
+        // Créer un élément de plat
+        function createDishElement(dish, category, index) {
+            const dishElement = document.createElement('div');
+            dishElement.className = 'menu-item editable';
+            dishElement.innerHTML = `
+                <img src="${dish.image}" alt="${dish.name}" data-category="${category}" data-index="${index}">
+                <div class="edit-controls">
+                    <input type="file" id="${category}-img-${index}" style="display: none;" accept="image/*" onchange="updateDishImage('${category}', ${index})">
+                    <button class="edit-image-btn" onclick="document.getElementById('${category}-img-${index}').click()">Changer</button>
+                </div>
+                <div class="menu-content">
+                    <h3>${dish.name}</h3>
+                    <p>${dish.description}</p>
+                    <div class="price">
+                        <span class="local-price">Prix CESAG: ${dish.priceLocal} FCFA</span>
+                        <span class="remote-price">Prix standard: ${dish.priceRemote} FCFA</span>
+                    </div>
+                    <button class="btn order-btn" onclick="openOrderModal('${dish.name}', ${dish.priceLocal}, ${dish.priceRemote})">Commander</button>
+                </div>
+            `;
+            return dishElement;
+        }
+
+        // Mettre à jour le plat du jour
+        function updateDailyDish() {
+            document.getElementById('daily-dish-name').textContent = menuData.dailyDish.name;
+            document.getElementById('daily-dish-desc').textContent = menuData.dailyDish.description;
+            document.getElementById('daily-dish-price-local').textContent = menuData.dailyDish.priceLocal;
+            document.getElementById('daily-dish-price-remote').textContent = menuData.dailyDish.priceRemote;
+            document.getElementById('daily-dish-img').src = menuData.dailyDish.image;
+        }
+
+        // Mettre à jour les images de la galerie
+        function updateGalleryImages() {
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            galleryItems.forEach((img, index) => {
+                if (galleryImages[index]) {
+                    img.src = galleryImages[index];
+                }
+            });
+        }
+
+        // Vérification de la géolocalisation
+        function checkGeolocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        const distance = calculateDistance(
+                            userLat, userLng, 
+                            CESAG_COORDS.latitude, CESAG_COORDS.longitude
+                        );
+                        
+                        isNearCESAG = distance <= MAX_DISTANCE_KM;
+                        updatePrices();
+                    },
+                    error => {
+                        console.error("Erreur de géolocalisation:", error);
+                        isNearCESAG = false;
+                        updatePrices();
+                    }
+                );
+            } else {
+                alert("La géolocalisation n'est pas supportée par ce navigateur.");
+                isNearCESAG = false;
+                updatePrices();
+            }
+        }
+
+        // Calcul de distance entre deux points (formule de Haversine)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Rayon de la Terre en km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        // Mise à jour des prix affichés selon la localisation
+        function updatePrices() {
+            const localPrices = document.querySelectorAll('.local-price');
+            const remotePrices = document.querySelectorAll('.remote-price');
+            
+            if (isNearCESAG) {
+                localPrices.forEach(price => price.style.display = 'block');
+                remotePrices.forEach(price => price.style.display = 'none');
+            } else {
+                localPrices.forEach(price => price.style.display = 'none');
+                remotePrices.forEach(price => price.style.display = 'block');
+            }
+        }
+
+        // Gestion des onglets du menu
+        function showCategory(category) {
+            // Masquer toutes les catégories
+            document.querySelectorAll('.menu-category').forEach(cat => {
+                cat.style.display = 'none';
+            });
+            
+            // Afficher la catégorie sélectionnée
+            document.getElementById(category).style.display = 'block';
+            
+            // Mettre à jour les boutons d'onglet
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Ouvrir le modal de commande
+        function openOrderModal(dish, localPrice, remotePrice) {
+            currentDish = dish;
+            currentPrice = isNearCESAG ? localPrice : remotePrice;
+            
+            document.getElementById('plat').value = dish;
+            document.getElementById('prix').value = currentPrice + ' FCFA';
+            document.getElementById('totalAmount').textContent = currentPrice;
+            
+            document.getElementById('orderModal').style.display = 'block';
+        }
+
+        // Fermer le modal de commande
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        // Afficher/masquer les options de livraison
+        function toggleDeliveryCost(show) {
+            const deliveryZoneGroup = document.getElementById('deliveryZoneGroup');
+            deliveryZoneGroup.style.display = show ? 'block' : 'none';
+            updateTotalCost();
+        }
+
+        // Mettre à jour le coût total
+        function updateTotalCost() {
+            let total = currentPrice;
+            
+            const deliveryOption = document.querySelector('input[name="delivery"]:checked');
+            if (deliveryOption && deliveryOption.value === 'delivery') {
+                const deliveryCost = parseInt(document.getElementById('deliveryZone').value);
+                total += deliveryCost;
+            }
+            
+            document.getElementById('totalAmount').textContent = total;
+        }
+
+        // Soumettre la commande
+        function submitOrder() {
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const adresse = document.getElementById('adresse').value;
+            const horaire = document.getElementById('horaire').value;
+            const instructions = document.getElementById('instructions').value;
+            const deliveryOption = document.querySelector('input[name="delivery"]:checked').value;
+            
+            if (!nom || !telephone || !horaire) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            // Calculer le coût total
+            let totalCost = currentPrice;
+            let deliveryCost = 0;
+            
+            if (deliveryOption === 'delivery') {
+                deliveryCost = parseInt(document.getElementById('deliveryZone').value);
+                totalCost += deliveryCost;
+            }
+            
+            // Générer le message WhatsApp
+            let message = `Nouvelle commande - ${document.getElementById('restaurant-name').textContent}%0A%0A`;
+            message += `Plat: ${currentDish}%0A`;
+            message += `Client: ${nom}%0A`;
+            message += `Téléphone: ${telephone}%0A`;
+            message += `Horaire souhaité: ${horaire}%0A`;
+            message += `Mode: ${deliveryOption === 'delivery' ? 'Livraison' : 'Récupération sur place'}%0A`;
+            
+            if (deliveryOption === 'delivery' && adresse) {
+                message += `Adresse: ${adresse}%0A`;
+            }
+            
+            message += `Prix du plat: ${currentPrice} FCFA%0A`;
+            
+            if (deliveryOption === 'delivery') {
+                message += `Frais de livraison: ${deliveryCost} FCFA%0A`;
+            }
+            
+            message += `Total: ${totalCost} FCFA%0A`;
+            
+            if (instructions) {
+                message += `Instructions: ${instructions}%0A`;
+            }
+            
+            // Générer le reçu
+            generateReceipt(nom, telephone, adresse, horaire, instructions, deliveryOption, deliveryCost, totalCost);
+            
+            // Rediriger vers WhatsApp
+            const whatsappNumber = "221781234567"; // Remplacer par le numéro réel
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            
+            // Fermer le modal
+            closeOrderModal();
+        }
+
+        // Générer le reçu
+        function generateReceipt(nom, telephone, adresse, horaire, instructions, deliveryOption, deliveryCost, totalCost) {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('fr-FR');
+            const timeStr = now.toLocaleTimeString('fr-FR');
+            
+            document.getElementById('receipt-restaurant-name').textContent = document.getElementById('restaurant-name').textContent;
+            document.getElementById('receipt-address').textContent = document.getElementById('contact-address').textContent;
+            document.getElementById('receipt-phone').textContent = `Tél: ${document.getElementById('contact-phone').textContent}`;
+            
+            document.getElementById('receiptDate').textContent = `Date: ${dateStr} ${timeStr}`;
+            document.getElementById('receiptCustomer').textContent = `Client: ${nom}`;
+            document.getElementById('receiptPhone').textContent = `Téléphone: ${telephone}`;
+            document.getElementById('receiptDish').textContent = `Plat: ${currentDish}`;
+            document.getElementById('receiptPrice').textContent = `Prix du plat: ${currentPrice} FCFA`;
+            
+            if (deliveryOption === 'delivery') {
+                document.getElementById('receiptDelivery').textContent = `Frais de livraison: ${deliveryCost} FCFA`;
+            } else {
+                document.getElementById('receiptDelivery').textContent = `Frais de livraison: 0 FCFA (récupération sur place)`;
+            }
+            
+            document.getElementById('receiptTotal').textContent = `Total: ${totalCost} FCFA`;
+            document.getElementById('receiptTime').textContent = `Horaire: ${horaire}`;
+            document.getElementById('receiptInstructions').textContent = `Instructions: ${instructions || 'Aucune'}`;
+            
+            document.getElementById('receipt').style.display = 'block';
+        }
+
+        // Imprimer le reçu
+        function printReceipt() {
+            window.print();
+        }
+
+        // MODE ÉDITION
+        function setupEditMode() {
+            // Vérifier si l'utilisateur est déjà connecté
+            const isLoggedIn = localStorage.getItem('editModeLoggedIn');
+            if (isLoggedIn === 'true') {
+                enableEditMode();
+            }
+        }
+
+        function openEditPanel() {
+            const isLoggedIn = localStorage.getItem('editModeLoggedIn');
+            if (isLoggedIn === 'true') {
+                document.getElementById('editPanel').classList.add('active');
+            } else {
+                document.getElementById('loginModal').style.display = 'block';
+            }
+        }
+
+        function closeEditPanel() {
+            document.getElementById('editPanel').classList.remove('active');
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === EDIT_PASSWORD) {
+                localStorage.setItem('editModeLoggedIn', 'true');
+                enableEditMode();
+                closeLoginModal();
+                document.getElementById('editPanel').classList.add('active');
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        function enableEditMode() {
+            editMode = true;
+            document.querySelectorAll('.editable').forEach(el => {
+                el.setAttribute('contenteditable', 'true');
+            });
+        }
+
+        function disableEditMode() {
+            editMode = false;
+            document.querySelectorAll('.editable').forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+            });
+            localStorage.removeItem('editModeLoggedIn');
+        }
+
+        function updateEditPanel() {
+            // Informations générales
+            document.getElementById('edit-restaurant-name').value = document.getElementById('restaurant-name').textContent;
+            document.getElementById('edit-phone').value = document.getElementById('contact-phone').textContent;
+            document.getElementById('edit-hours').value = document.getElementById('contact-hours').textContent;
+            document.getElementById('edit-address').value = document.getElementById('contact-address').textContent;
+            
+            // Plat du jour
+            document.getElementById('edit-daily-dish-name').value = menuData.dailyDish.name;
+            document.getElementById('edit-daily-dish-desc').value = menuData.dailyDish.description;
+            document.getElementById('edit-daily-dish-price-local').value = menuData.dailyDish.priceLocal;
+            document.getElementById('edit-daily-dish-price-remote').value = menuData.dailyDish.priceRemote;
+            
+            // Plats sénégalais
+            const senegaleseContainer = document.getElementById('senegalese-dishes');
+            senegaleseContainer.innerHTML = '';
+            menuData.senegalese.forEach((dish, index) => {
+                senegaleseContainer.appendChild(createEditDishElement(dish, 'senegalese', index));
+            });
+            
+            // Plats ivoiriens
+            const ivorianContainer = document.getElementById('ivorian-dishes');
+            ivorianContainer.innerHTML = '';
+            menuData.ivorian.forEach((dish, index) => {
+                ivorianContainer.appendChild(createEditDishElement(dish, 'ivorian', index));
+            });
+        }
+
+        function createEditDishElement(dish, category, index) {
+            const dishElement = document.createElement('div');
+            dishElement.className = 'edit-item';
+            dishElement.innerHTML = `
+                <h5>Plat ${index + 1}</h5>
+                <label>Nom:</label>
+                <input type="text" value="${dish.name}" onchange="updateDishProperty('${category}', ${index}, 'name', this.value)">
+                <label>Description:</label>
+                <textarea onchange="updateDishProperty('${category}', ${index}, 'description', this.value)">${dish.description}</textarea>
+                <label>Prix CESAG:</label>
+                <input type="number" value="${dish.priceLocal}" onchange="updateDishProperty('${category}', ${index}, 'priceLocal', this.value)">
+                <label>Prix standard:</label>
+                <input type="number" value="${dish.priceRemote}" onchange="updateDishProperty('${category}', ${index}, 'priceRemote', this.value)">
+                <button class="btn" onclick="removeDish('${category}', ${index})" style="background-color: #f44336; margin-top: 5px;">Supprimer</button>
+            `;
+            return dishElement;
+        }
+
+        function updateDishProperty(category, index, property, value) {
+            menuData[category][index][property] = value;
+            initMenu(); // Regénérer le menu
+        }
+
+        function addNewDish(category) {
+            menuData[category].push({
+                name: "Nouveau Plat",
+                description: "Description du plat",
+                priceLocal: 2000,
+                priceRemote: 2500,
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            });
+            updateEditPanel();
+            initMenu();
+        }
+
+        function removeDish(category, index) {
+            if (confirm("Êtes-vous sûr de vouloir supprimer ce plat ?")) {
+                menuData[category].splice(index, 1);
+                updateEditPanel();
+                initMenu();
+            }
+        }
+
+        function saveChanges() {
+            // Sauvegarder les informations générales
+            const restaurantName = document.getElementById('edit-restaurant-name').value;
+            document.getElementById('restaurant-name').textContent = restaurantName;
+            document.getElementById('hero-title').textContent = restaurantName;
+            document.getElementById('footer-text').textContent = `${restaurantName} &copy; 2023 - Tous droits réservés`;
+            
+            document.getElementById('contact-phone').textContent = document.getElementById('edit-phone').value;
+            document.getElementById('contact-hours').textContent = document.getElementById('edit-hours').value;
+            document.getElementById('contact-address').textContent = document.getElementById('edit-address').value;
+            
+            // Sauvegarder le plat du jour
+            menuData.dailyDish.name = document.getElementById('edit-daily-dish-name').value;
+            menuData.dailyDish.description = document.getElementById('edit-daily-dish-desc').value;
+            menuData.dailyDish.priceLocal = parseInt(document.getElementById('edit-daily-dish-price-local').value);
+            menuData.dailyDish.priceRemote = parseInt(document.getElementById('edit-daily-dish-price-remote').value);
+            
+            updateDailyDish();
+            saveToLocalStorage();
+            alert("Modifications enregistrées avec succès !");
+        }
+
+        function updateGalleryImage(index) {
+            const fileInput = document.getElementById(`gallery-img-${index}`);
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    galleryImages[index] = e.target.result;
+                    updateGalleryImages();
+                    saveToLocalStorage();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateDishImage(category, index) {
+            const fileInput = document.getElementById(`${category}-img-${index}`);
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    menuData[category][index].image = e.target.result;
+                    initMenu();
+                    saveToLocalStorage();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Fermer le modal si on clique en dehors
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    if (modal.id === 'orderModal') closeOrderModal();
+                    if (modal.id === 'loginModal') closeLoginModal();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
